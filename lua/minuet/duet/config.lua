@@ -166,7 +166,7 @@ end
 
 local function make_claude_options()
     return {
-        model = 'claude-haiku-4-5',
+        model = 'claude-haiku-5-5',
         api_key = 'ANTHROPIC_API_KEY',
         end_point = 'https://api.anthropic.com/v1/messages',
         system = vim.deepcopy(default_system),

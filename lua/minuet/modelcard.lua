@@ -20,6 +20,7 @@ M.models = {
         'claude-3-5-haiku-latest',
         'claude-3-5-haiku-20241022',
         'claude-haiku-4-5',
+        'claude-haiku-5-5',
         'claude-3-opus-latest',
         'claude-3-opus-20240229',
     },

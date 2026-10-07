@@ -977,7 +977,7 @@ the following is the default configuration for Claude:
 provider_options = {
     claude = {
         max_tokens = 256,
-        model = 'claude-haiku-4.5',
+        model = 'claude-haiku-5-5',
         system = "see [Prompt] section for the default value",
         few_shots = "see [Prompt] section for the default value",
         chat_input = "See [Prompt Section for default value]",
@@ -991,6 +991,20 @@ provider_options = {
         },
         -- a list of functions to transform the endpoint, header, and request body
         transform = {},
+    },
+}
+```
+
+The following configuration is not the default, but recommended to avoid the
+latency added by thinking.
+
+```lua
+provider_options = {
+    claude = {
+        optional = {
+            -- disable thinking to avoid first token latency
+            thinking = { type = 'disabled' },
+        },
     },
 }
 ```
@@ -1631,7 +1645,7 @@ require('minuet').setup {
                 transform = {}, -- Optional endpoint/header/body transforms applied before sending the request.
             },
             claude = {
-                model = 'claude-haiku-4-5',
+                model = 'claude-haiku-5-5',
                 api_key = 'ANTHROPIC_API_KEY',
                 end_point = 'https://api.anthropic.com/v1/messages',
                 system = { ... },
