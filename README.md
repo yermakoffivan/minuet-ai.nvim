@@ -906,9 +906,17 @@ You need to set the field `provider` in the config, the default provider is
 
 ```lua
 require('minuet').setup {
-    provider = 'gemini'
+    provider = 'gemini',
+    duet = {
+        provider = 'openai',
+    },
 }
 ```
+
+These settings are for inline completion. Duet (next-edit prediction) has its
+own `duet.provider` and `duet.provider_options`, and you need to configure them
+separately. The options and the way to configure them are the same, so the
+provider sections below apply to both.
 
 ## OpenAI
 
@@ -1451,6 +1459,11 @@ vim.keymap.set('i', '<A-x>', '<cmd>Minuet duet dismiss<cr>', { desc = 'Minuet du
 
 The recommended model at the moment is `gemini-3-flash-preview`.
 
+The duet provider and its options are separate from the top-level `provider`
+and `provider_options` used by inline completion. You need to configure them
+separately. The options and the way to configure them are the same; see the
+[Providers](#providers) section for details.
+
 ```lua
 require('minuet').setup {
     duet = {
@@ -1594,7 +1607,7 @@ recent_edits = {
 ```lua
 require('minuet').setup {
     duet = {
-        provider = 'gemini', -- Provider used by `:Minuet duet predict`.
+        provider = 'gemini', -- Provider used by `:Minuet duet predict`; separate from the top-level `provider`.
         request_timeout = 15, -- Timeout in seconds for a single duet request.
         auto_trigger = {
             debounce = 600, -- Milliseconds of idle after a text change before an automatic prediction fires.
